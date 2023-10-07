@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  filebrowser:
+    image: filebrowser/filebrowser
+    user: "${UID-1000}:${GID-1000}"
+    ports:
+      - ${PORT-8081}:80
+    volumes:
+      - ${DATA_DIR}:/srv
+      - ${WORK_DIR}/database:/database
+      - ${WORK_DIR}/config:/config
+    environment:
+      - FB_BASEURL=${FB_BASEURL-/filebrowser}
+    restart: always
