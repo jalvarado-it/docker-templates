@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  web:
+    image: alerta/alerta-web
+    ports:
+      - "${PORT-8080}:8080"
+    depends_on:
+      - db
+    environment:
+      - DEBUG=${DEBUG-1}
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD@db:5432/${POSTGRES_DB}
+      - AUTH_REQUIRED=${AUTH_REQUIRED}
+      - ADMIN_USERS=${ADMIN_USERS}
+      - ADMIN_KEY=${ADMIN_KEY}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - PLUGINS=${PLUGINS}
+    restart: always
+  db:
+    image: postgres
+    volumes:
+      - ${PG_DATA}:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    restart: always
