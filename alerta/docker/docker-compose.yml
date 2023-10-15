@@ -8,7 +8,7 @@ services:
       - db
     environment:
       - DEBUG=${DEBUG-1}
-      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD@db:5432/${POSTGRES_DB}
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
       - AUTH_REQUIRED=${AUTH_REQUIRED}
       - ADMIN_USERS=${ADMIN_USERS}
       - ADMIN_KEY=${ADMIN_KEY}
