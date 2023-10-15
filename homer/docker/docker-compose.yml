@@ -10,3 +10,4 @@ services:
     user: ${PUID-1000}:${PGID-1000}
     environment:
       - INIT_ASSETS=${INIT_ASSETS-1} 
+    restart: always  
